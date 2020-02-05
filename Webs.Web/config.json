@@ -1,0 +1,16 @@
+{
+  "ConnectionStrings": {
+    "WebsDb": "server=localhost;uid=root;pwd=1234;database=test"
+  },
+
+
+
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ]
+}
