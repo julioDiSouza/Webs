@@ -11,6 +11,7 @@ namespace Webs.Domain.Entities
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
         public int UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public DateTime DataPrevisao { get; set; }
         public string Cep { get; set; }
         public string Estado { get; set; }
@@ -19,9 +20,9 @@ namespace Webs.Domain.Entities
         public int Numero { get; set; }
 
         public int FormaPagamentoId { get; set; }
-        public FormaPagamento FormaPagamento { get; set; }
+        public virtual FormaPagamento FormaPagamento { get; set; }
 
-        public ICollection<ItemPedido> ItensPedidos { get; set; }
+        public virtual ICollection<ItemPedido> ItensPedidos { get; set; }
 
         public override void Validate()
         {

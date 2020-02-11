@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Webs.Domain.Contracts;
 using Webs.Repository.Contexto;
+using Webs.Repository.Repositorios;
 
 namespace Webs.Web
 {
@@ -27,8 +29,8 @@ namespace Webs.Web
         {
             var connStr = Configuration.GetConnectionString("WebsDb");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<WebsContexto>(option => option.UseMySql(connStr, m => m.MigrationsAssembly("Webs.Repository")));
-
+            services.AddDbContext<WebsContexto>(option => option.UseLazyLoadingProxies().UseMySql(connStr, m => m.MigrationsAssembly("Webs.Repository")));
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

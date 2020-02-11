@@ -12,7 +12,7 @@ namespace Webs.Domain.Entities
         public string Nome { get; set; }
         public string SobreNome { get; set; }
 
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public override void Validate()
         {
