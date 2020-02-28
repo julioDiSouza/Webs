@@ -1,11 +1,32 @@
 <div class="">
   <form class="form-signin">
     <h1 class="h4 mb-2">Login do Cliente</h1>
-    <input id="inputEmail" name="email" type="email" class="form-control mb-2" placeholder="Informe o email" />
-    <input id="inputSenha" name="senha" type="password" class="form-control mb-2" placeholder="Senha" />
-    <button class="btn btn-primary btn-block" type="submit">Entrar</button>
-    <img [src]="endImg" [title]="tituloDica" />
+    <input id="inputEmail" name="email" type="email"
+           class="form-control mb-2" [ngClass]="{
+           'is-invalid': email.invalid && (email.dirty || email.touched),
+           'is-valid': email.valid && (email.dirty || email.touched)
+           }" placeholder="Informe o email"
+           [(ngModel)]="usuario.email" #email="ngModel" email required />
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched) ">
+      <div *ngIf="email.errors.required">
+        Campo obrigatório
+      </div>
+      <div *ngIf="email.errors.email">
+        Formato de email inválido
+      </div>
+    </div>
+
+    <input id="inputSenha" name="senha" type="password" class="form-control mb-2" [ngClass]="{
+           'is-invalid': senha.invalid && (senha.dirty || senha.touched),
+           'is-valid': senha.valid && (senha.dirty || senha.touched)
+           }"
+           placeholder="Senha" [(ngModel)]="usuario.senha" #senha="ngModel" required />
+    <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+      <div *ngIf="senha.errors.required">
+        Campo obrigatório
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
   </form>
-  {{ email }}
-  {{ senha }}
 </div>

@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "WebsDb": "server=localhost;uid=root;pwd=1234;database=test"
+    "WebsDb": "server=localhost;uid=root;pwd=123456;database=test"
   },
 
 
