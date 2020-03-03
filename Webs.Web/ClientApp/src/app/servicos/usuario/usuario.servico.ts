@@ -9,6 +9,16 @@ import { Usuario } from "../../modelo/usuario";
 export class UsuarioServico {
 
   private baseURL: string;
+  private _usuario: Usuario;
+
+  get usuario(): Usuario {
+
+  } 
+
+  set usuario(usuario: Usuario) {
+
+  } 
+
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.baseURL = baseUrl;
   }
@@ -21,7 +31,7 @@ export class UsuarioServico {
       senha: usuario.senha
     }
 
-    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
+    return this.http.post<Usuario>(this.baseURL + "api/usuario/VerificarUsuario", body, { headers });
   }
 
 }

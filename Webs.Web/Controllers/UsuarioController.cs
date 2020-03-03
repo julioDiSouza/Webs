@@ -7,6 +7,7 @@ using Webs.Domain.Entities;
 
 namespace Webs.Web.Controllers
 {
+    [Route("api/[Controller]")]
     public class UsuarioController : Controller
     {
 
@@ -24,6 +25,19 @@ namespace Webs.Web.Controllers
 			{
                 return BadRequest(ex.ToString());
 			}
+        }
+
+        [HttpPost]
+        public IActionResult Post()
+        {
+            try
+            {
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
         }
 
     }
