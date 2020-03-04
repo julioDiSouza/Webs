@@ -27,10 +27,13 @@ namespace Webs.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connStr = Configuration.GetConnectionString("WebsDb");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            var connStr = Configuration.GetConnectionString("WebsDb");
             services.AddDbContext<WebsContexto>(option => option.UseLazyLoadingProxies().UseMySql(connStr, m => m.MigrationsAssembly("Webs.Repository")));
+
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Webs.Domain.Contracts;
 using Webs.Domain.Entities;
 
 namespace Webs.Web.Controllers
@@ -11,13 +12,20 @@ namespace Webs.Web.Controllers
     public class UsuarioController : Controller
     {
 
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+        }
+
         [HttpPost("VerificarUsuario")]
         public IActionResult VerificarUsuario([FromBody] Usuario usuario)
         {
 			try
 			{
-                if (usuario.Email == "julio@teste" && usuario.Senha == "123")
-                    return Ok(usuario);
+                var usuarioRet = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
+                if (usuarioRet != null)
+                    return Ok(usuarioRet);
 
                 return BadRequest("Usuário ou senha inválido");
             }
