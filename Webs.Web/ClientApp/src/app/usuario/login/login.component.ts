@@ -33,11 +33,6 @@ export class LoginComponent implements OnInit {
       usuario_json => {
         this.usuarioServico.usuario = usuario_json;
 
-        var usuarioRet: Usuario;
-        usuarioRet = data;
-        sessionStorage.setItem("usuario-autenticado", "1");
-        sessionStorage.setItem("usuario-email", usuarioRet.email);
-
         if (this.returnUrl == null) 
           this.router.navigate(['/']);
         else
