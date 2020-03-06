@@ -79,8 +79,10 @@
 
     <button class="btn btn-primary btn-block" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
-      Entrar
+      Cadastrar
     </button>
+
+    <a class="mt-2" [routerLink]='["/entrar"]'>voltar</a>
 
     <div class="alert alert-danger mt-2" *ngIf="mensagem">
       {{ mensagem }}
